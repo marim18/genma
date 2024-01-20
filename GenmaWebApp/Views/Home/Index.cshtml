@@ -1,0 +1,54 @@
+﻿@using GenmaWebApp.Models
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore.Storage
+﻿﻿@using Microsoft.EntityFrameworkCore
+@using Microsoft.EntityFrameworkCore.Storage
+@model Searchclass 
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <img id="Banner" src="GenematorProto.png" width="100%">
+
+
+    <form asp-controller="Recipes" asp-action="Index">
+        <div class="row">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-6">
+                <div class="container-search">
+                    <input asp-for="searchword" type="text" class="search_inpt" placeholder="Search..."/>
+                    <input type="submit" class="search_btn" value="&#128269"/>
+                </div>
+                <input asp-for="random" type="checkbox" class="randsearch_btn" name="random" id="random" onclick="form.submit();"/> <label for="random">&#128256</label>
+            </div>
+            <div class="col-sm-3">
+
+            </div>
+        </div>
+        <p>
+
+        <br/>
+
+        <input asp-for="gluten" type="checkbox" name="gluten" id="glutenfree">
+        <label class="label_custom" for="glutenfree">glutenfri</label>
+        <input asp-for="vegan" type="checkbox" name="vegan" id="vegan">
+        <label class="label_custom" for="vegan">vegansk</label>
+        <input asp-for="vegetarian" type="checkbox" name="vegetarian" id="vegetarian">
+        <label class="label_custom" for="vegetarian">vegetariansk</label>
+        <input asp-for="dairy" type="checkbox" name="dairy" id="dairy">
+        <label class="label_custom" for="dairy">Meieriprodukter</label>
+        <input asp-for="favorites" type="checkbox" name="starred" id="starred">
+        <label class="label_custom" for="starred">Favoritter</label>
+        <input asp-for="egg" type="checkbox" name="egg" id="egg">
+        <label class="label_custom" for="egg">eggefri</label>
+        <input asp-for="nuts" type="checkbox" name="nuts" id="nuts">
+        <label class="label_custom" for="nuts">Nøttefritt</label>
+
+    </form>
+</div>

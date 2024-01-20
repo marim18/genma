@@ -1,0 +1,76 @@
+@model GenmaWebApp.Models.ViewModels.RecipeEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>RecipeModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RecipeModel.Id" />
+            <div class="form-group">
+                <label asp-for="RecipeModel.Title" class="control-label"></label>
+                <input asp-for="RecipeModel.Title" class="form-control" />
+                <span asp-validation-for="RecipeModel.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RecipeModel.Procedure" class="control-label"></label>
+                <input asp-for="RecipeModel.Procedure" class="form-control" />
+                <span asp-validation-for="RecipeModel.Procedure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+               <div class="form-group">
+                            <h4>RecipeTags</h4>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        RecipeTag
+                                    </th>
+                                    <th style="text-align:center;">
+                                        Linked
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                
+                                @for (var i = 0; i < Model.SelectedTagStates.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(m => m.SelectedTagStates[i].RecipeTagModel.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => m.SelectedTagStates[i].RecipeTagModel.Name)
+                                        </td>
+                                        <td style="text-align:center;">
+                                            @Html.CheckBoxFor(m => m.SelectedTagStates[i].Selected)
+                                            @Html.HiddenFor(m => m.SelectedTagStates[i].RecipeTagModel.Id)
+                                        </td>
+            
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+            <div class="form-group">
+               <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
